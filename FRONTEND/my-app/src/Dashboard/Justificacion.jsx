@@ -15,7 +15,7 @@ const Justificacion = () => {
 
     // Datos para enviar
     const justificacionData = {
-      FaltaAsistencia: faltaAsistencia,
+      FaltaAsistencia: parseInt(faltaAsistencia, 10), // Asegúrate de que esto sea un número entero
       id_user: 1, // Aquí deberías establecer el ID del usuario de acuerdo a tu lógica de autenticación
       descripcion,
       status,
@@ -29,6 +29,7 @@ const Justificacion = () => {
       setStatus(false);
     } catch (err) {
       setError('Error al añadir la justificación');
+      console.error(err.response ? err.response.data : err.message); // Para obtener más detalles del error
     }
   };
 
