@@ -216,10 +216,364 @@
 
 ![Modelos](./diagrama_ER/modelos.jpeg)
 
-##  BACKEND
-##  FRONTEND
+##  BACKEND (DJango)
+    A continuación se muestra el backend de nuestra aplicación:
+    Clase serializer: Este código permite convertir objetos de modelo en datos que pueden ser        enviados a través de una API REST, lo que facilita la comunicación entre la aplicación y los     clientes que la utilizan.
+```python
+from rest_framework import serializers
+from django.contrib.auth.models import User
+from .models import Asistencia, Estudiante , FaltaAsistencia , FaltaPago , Justificacion , Pago, servicio , University
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email', 'password']
+        extra_kwargs = {'password': {'write_only': True}}
+    
+class AsistenciaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Asistencia
+        fields = '__all__'
 
+class EstudianteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Estudiante
+        fields = '__all__'
+
+class FaltaAsistenciaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FaltaAsistencia
+        fields = '__all__'
+
+class FaltaPagoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FaltaPago
+        fields = '__all__'
+
+class JustificacionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Justificacion
+        fields = '__all__'
+
+class PagoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pago
+        fields = '__all__'
+
+class ServicioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = servicio
+        fields = '__all__'
+
+class UniversitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = University
+        fields = '__all__'
+```
+    Clase views.py: Este sección del proyecto define una serie de vistas que permiten crear, leer, actualizar y eliminar objetos de diferentes modelos en una aplicación Django que utiliza DRF.
+```python
+    from rest_framework import generics
+from rest_framework import generics
+from .models.Asistencia import Asistencia
+from .models.Estudiante import Estudiante
+from .models.FaltaAsistencia import FaltaAsistencia
+from .models.FaltaPago import FaltaPago
+from .models.Justificacion import Justificacion
+from .models.Pago import Pago
+from .models.servicio import servicio
+from .models.University import University
+from .serializers import AsistenciaSerializer, EstudianteSerializer, FaltaAsistenciaSerializer, FaltaPagoSerializer, JustificacionSerializer, PagoSerializer, ServicioSerializer, UniversitySerializer
+
+from .serializers import AsistenciaSerializer, EstudianteSerializer, FaltaAsistenciaSerializer, FaltaPagoSerializer, JustificacionSerializer, PagoSerializer, ServicioSerializer, UniversitySerializer
+
+# Vistas para el modelo Asistencia
+class AsistenciaListCreate(generics.ListCreateAPIView):
+    queryset = Asistencia.objects.all()
+    serializer_class = AsistenciaSerializer
+
+class AsistenciaDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Asistencia.objects.all()
+    serializer_class = AsistenciaSerializer
+
+# Vistas para el modelo Estudiante
+class EstudianteListCreate(generics.ListCreateAPIView):
+    queryset = Estudiante.objects.all()
+    serializer_class = EstudianteSerializer
+
+class EstudianteDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Estudiante.objects.all()
+    serializer_class = EstudianteSerializer
+
+# Vistas para el modelo FaltaAsistencia
+class FaltaAsistenciaListCreate(generics.ListCreateAPIView):
+    queryset = FaltaAsistencia.objects.all()
+    serializer_class = FaltaAsistenciaSerializer
+
+class FaltaAsistenciaDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = FaltaAsistencia.objects.all()
+    serializer_class = FaltaAsistenciaSerializer
+
+# Vistas para el modelo FaltaPago
+class FaltaPagoListCreate(generics.ListCreateAPIView):
+    queryset = FaltaPago.objects.all()
+    serializer_class = FaltaPagoSerializer
+
+class FaltaPagoDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = FaltaPago.objects.all()
+    serializer_class = FaltaPagoSerializer
+
+# Vistas para el modelo Justificacion
+class JustificacionListCreate(generics.ListCreateAPIView):
+    queryset = Justificacion.objects.all()
+    serializer_class = JustificacionSerializer
+
+class JustificacionDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Justificacion.objects.all()
+    serializer_class = JustificacionSerializer
+
+# Vistas para el modelo Pago
+class PagoListCreate(generics.ListCreateAPIView):
+    queryset = Pago.objects.all()
+    serializer_class = PagoSerializer
+
+class PagoDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Pago.objects.all()
+    serializer_class = PagoSerializer
+
+# Vistas para el modelo Servicio
+class ServicioListCreate(generics.ListCreateAPIView):
+    queryset = servicio.objects.all()
+    serializer_class = ServicioSerializer
+
+class ServicioDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = servicio.objects.all()
+    serializer_class = ServicioSerializer
+
+# Vistas para el modelo University
+class UniversityListCreate(generics.ListCreateAPIView):
+    queryset = University.objects.all()
+    serializer_class = UniversitySerializer
+
+class UniversityDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = University.objects.all()
+    serializer_class = UniversitySerializer
+```
+    Clase admin.py: Este código registra los modelos de la aplicación en la interfaz de administración de Django, permitiendo a los administradores crear, leer, actualizar y eliminar objetos de manera sencilla y visual. La interfaz de administración es una herramienta segura y útil para gestionar los datos de la aplicación. Los modelos registrados incluyen Estudiante, Pago, Servicio, FaltaPago, Asistencia, FaltaAsistencia, Justificación y Universidad.
+    
+```python
+    from django.contrib import admin
+    from .models.Estudiante import Estudiante
+    from .models.Pago import Pago
+    from .models.servicio import servicio
+    from .models.FaltaPago import FaltaPago
+    from .models.Asistencia import Asistencia
+    from .models.FaltaAsistencia import FaltaAsistencia
+    from .models.Justificacion import Justificacion
+    from .models.University import University
+    
+    admin.site.register(Estudiante)
+    admin.site.register(Pago)
+    admin.site.register(FaltaPago)
+    admin.site.register(servicio)
+    admin.site.register(Asistencia)
+    admin.site.register(FaltaAsistencia)
+    admin.site.register(Justificacion)
+    admin.site.register(University)
+```
+
+## FRONTEND (REACT)
+    api.js: Este archivo de servicios API en React interactúa con una API para obtener, agregar, eliminar y actualizar datos de diferentes recursos. Utiliza Axios para realizar peticiones HTTP. Las funciones se organizan por recurso, como asistencias, estudiantes, faltas de asistencia, etc. Cada función realiza una petición HTTP específica para interactuar con la API. El archivo proporciona una capa de abstracción para interactuar con la API de manera segura y eficiente. Las funciones para obtener datos realizan peticiones GET a la API. Las funciones para agregar datos realizan peticiones POST a la API. Las funciones para eliminar datos realizan peticiones DELETE a la API. Las funciones para actualizar datos realizan peticiones PUT a la API. El archivo también incluye una función para fetch asistencias que utiliza la función fetch para obtener datos de asistencias.
+
+```python
+import axios from 'axios';
+
+const API_URL = 'http://127.0.0.1:8000/api';
+
+// Funciones para Asistencia
+export const getAllAsistencias = () => {
+    return axios.get(`${API_URL}/asistencias/`);
+};
+
+export const getAsistenciaById = (id) => {
+    return axios.get(`${API_URL}/asistencias/${id}/`);
+};
+
+// Funciones para Estudiante
+export const getAllEstudiantes = () => {
+    return axios.get(`${API_URL}/estudiantes/`);
+};
+
+export const getEstudianteById = (id) => {
+    return axios.get(`${API_URL}/estudiantes/${id}/`);
+};
+
+// Funciones para FaltaAsistencia
+export const getAllFaltasAsistencia = () => {
+    return axios.get(`${API_URL}/faltas-asistencia/`);
+};
+
+export const getFaltaAsistenciaById = (id) => {
+    return axios.get(`${API_URL}/faltas-asistencia/${id}/`);
+};
+
+// Funciones para FaltaPago
+export const getAllFaltasPago = () => {
+    return axios.get(`${API_URL}/faltas-pago/`);
+};
+
+export const getFaltaPagoById = (id) => {
+    return axios.get(`${API_URL}/faltas-pago/${id}/`);
+};
+
+// Funciones para Justificacion
+export const getAllJustificaciones = () => {
+    return axios.get(`${API_URL}/justificaciones/`);
+};
+
+export const getJustificacionById = (id) => {
+    return axios.get(`${API_URL}/justificaciones/${id}/`);
+};
+
+// Funciones para Pago
+export const getAllPagos = () => {
+    return axios.get(`${API_URL}/pagos/`);
+};
+
+export const getPagoById = (id) => {
+    return axios.get(`${API_URL}/pagos/${id}/`);
+};
+
+// Funciones para Servicio
+export const getAllServicios = () => {
+    return axios.get(`${API_URL}/servicios/`);
+};
+
+export const getServicioById = (id) => {
+    return axios.get(`${API_URL}/servicios/${id}/`);
+};
+
+// Funciones para University
+export const getAllUniversidades = () => {
+    return axios.get(`${API_URL}/universidades/`);
+};
+
+export const getUniversityById = (id) => {
+    return axios.get(`${API_URL}/universidades/${id}/`);
+};
+
+// Funciones para agregar datos
+export const addAsistencia = (asistencia) => {
+    return axios.post(`${API_URL}/asistencias/`, asistencia);
+};
+
+export const addEstudiante = (estudiante) => {
+    return axios.post(`${API_URL}/estudiantes/`, estudiante);
+};
+
+export const addFaltaAsistencia = (faltaAsistencia) => {
+    return axios.post(`${API_URL}/faltas-asistencia/`, faltaAsistencia);
+};
+
+export const addFaltaPago = (faltaPago) => {
+    return axios.post(`${API_URL}/faltas-pago/`, faltaPago);
+};
+
+export const addJustificacion = (justificacion) => {
+    return axios.post(`${API_URL}/justificaciones/`, justificacion);
+};
+
+export const addPago = (pago) => {
+    return axios.post(`${API_URL}/pagos/`, pago);
+};
+
+export const addServicio = (servicio) => {
+    return axios.post(`${API_URL}/servicios/`, servicio);
+};
+
+export const addUniversity = (university) => {
+    return axios.post(`${API_URL}/universidades/`, university);
+};
+
+// Funciones para eliminar datos
+export const deleteAsistencia = (id) => {
+    return axios.delete(`${API_URL}/asistencias/${id}/`);
+};
+
+export const deleteEstudiante = (id) => {
+    return axios.delete(`${API_URL}/estudiantes/${id}/`);
+};
+
+export const deleteFaltaAsistencia = (id) => {
+    return axios.delete(`${API_URL}/faltas-asistencia/${id}/`);
+};
+
+export const deleteFaltaPago = (id) => {
+    return axios.delete(`${API_URL}/faltas-pago/${id}/`);
+};
+
+export const deleteJustificacion = (id) => {
+    return axios.delete(`${API_URL}/justificaciones/${id}/`);
+};
+
+export const deletePago = (id) => {
+    return axios.delete(`${API_URL}/pagos/${id}/`);
+};
+
+export const deleteServicio = (id) => {
+    return axios.delete(`${API_URL}/servicios/${id}/`);
+};
+
+export const deleteUniversity = (id) => {
+    return axios.delete(`${API_URL}/universidades/${id}/`);
+};
+
+// Funciones para actualizar datos
+export const updateAsistencia = (id, asistencia) => {
+    return axios.put(`${API_URL}/asistencias/${id}/`, asistencia);
+};
+
+export const updateEstudiante = (id, estudiante) => {
+    return axios.put(`${API_URL}/estudiantes/${id}/`, estudiante);
+};
+
+export const updateFaltaAsistencia = (id, faltaAsistencia) => {
+    return axios.put(`${API_URL}/faltas-asistencia/${id}/`, faltaAsistencia);
+};
+
+export const updateFaltaPago = (id, faltaPago) => {
+    return axios.put(`${API_URL}/faltas-pago/${id}/`, faltaPago);
+};
+
+export const updateJustificacion = (id, justificacion) => {
+    return axios.put(`${API_URL}/justificaciones/${id}/`, justificacion);
+};
+
+export const updatePago = (id, pago) => {
+    return axios.put(`${API_URL}/pagos/${id}/`, pago);
+};
+
+export const updateServicio = (id, servicio) => {
+    return axios.put(`${API_URL}/servicios/${id}/`, servicio);
+};
+
+export const updateUniversity = (id, university) => {
+    return axios.put(`${API_URL}/universidades/${id}/`, university);
+};
+
+export const fetchAsistencias = async () => {
+    try {
+      const response = await fetch(API_URL);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching asistencias:', error);
+      throw error;
+    }
+  };
+```
 
 ##  CRUD - Core Business - Clientes finales
     El núcleo de negocio del sistema de inscripciones tiene valor de aceptación para los cliente finales (alumnos) radica en realizar el proceso de inscripción propiamente, que empieza desde que:
