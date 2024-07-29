@@ -188,33 +188,8 @@
 ...
 
 ##  Diagrama Entidad-Relación
-   ![Diagramaa_ER](./diagrama_ER/erd.png)
-##  Administración con Django
-    Para iniciar se crea un diagrama Entidad Relacion , plasmando las entidades que llegaremos  acrear , junto a sus atributos ya vistos anteriormente, teniendo finalmente:
-    Estudiante
-        CUI (Primary Key)
-        Nombre
-        Apellido
-        Carrera_universitarioa (foreign Key)
-        Correo (FK)
-        Status
-    Pago:
-        ID_pago(Pk)
-        CUI (FK)
-        monto
-        semana
-        Status
-    Asistencia:
-        Id_asistencia (PK)
-        Estudiante (FK)
-        Status
-    Justificacion:
-        Id_asistencia (FK)
-        Descripcion
-## Modelos
-    Una ves realiado el diagrama ER , pasamos a la creacion delos modelos como es el caso de:
-
-![Modelos](./diagrama_ER/modelos.jpeg)
+    En la siguiente imagen podemos apreciar el diagrama de Entidad-Relación:
+![ER Diagram](erd.png)
 
 ##  BACKEND (DJango)
     A continuación se muestra el backend de nuestra aplicación:
@@ -380,10 +355,8 @@ class UniversityDetail(generics.RetrieveUpdateDestroyAPIView):
     admin.site.register(Justificacion)
     admin.site.register(University)
 ```
-
-## FRONTEND (REACT)
-    api.js: Este archivo de servicios API en React interactúa con una API para obtener, agregar, eliminar y actualizar datos de diferentes recursos. Utiliza Axios para realizar peticiones HTTP. Las funciones se organizan por recurso, como asistencias, estudiantes, faltas de asistencia, etc. Cada función realiza una petición HTTP específica para interactuar con la API. El archivo proporciona una capa de abstracción para interactuar con la API de manera segura y eficiente. Las funciones para obtener datos realizan peticiones GET a la API. Las funciones para agregar datos realizan peticiones POST a la API. Las funciones para eliminar datos realizan peticiones DELETE a la API. Las funciones para actualizar datos realizan peticiones PUT a la API. El archivo también incluye una función para fetch asistencias que utiliza la función fetch para obtener datos de asistencias.
-
+##  FrontEnd (REACT)
+    A continuación tenemos la clase api.js que es fundamental en el FrontEnd: Este archivo de servicios API en React interactúa con una API para obtener, agregar, eliminar y actualizar datos de diferentes recursos. Utiliza Axios para realizar peticiones HTTP. Las funciones se organizan por recurso, como asistencias, estudiantes, faltas de asistencia, etc. Cada función realiza una petición HTTP específica para interactuar con la API. El archivo proporciona una capa de abstracción para interactuar con la API de manera segura y eficiente. Las funciones para obtener datos realizan peticiones GET a la API. Las funciones para agregar datos realizan peticiones POST a la API. Las funciones para eliminar datos realizan peticiones DELETE a la API. Las funciones para actualizar datos realizan peticiones PUT a la API. El archivo también incluye una función para fetch asistencias que utiliza la función fetch para obtener datos de asistencias.
 ```python
 import axios from 'axios';
 
@@ -575,32 +548,76 @@ export const fetchAsistencias = async () => {
   };
 ```
 
-##  CRUD - Core Business - Clientes finales
-    El núcleo de negocio del sistema de inscripciones tiene valor de aceptación para los cliente finales (alumnos) radica en realizar el proceso de inscripción propiamente, que empieza desde que:
+##  Serializer
+    Este archivo define serializadores para modelos de Django utilizando rest_framework. Los serializadores convierten objetos de modelos en datos serializados para API. Se definen 9 serializadores para diferentes modelos, incluyendo User, Asistencia, Estudiante, etc. Cada serializador incluye todos los campos del modelo (__all__). Estos serializadores se utilizan en vistas de Django Rest Framework para devolver datos en formato JSON.
+```python
+    from rest_framework import serializers
+from django.contrib.auth.models import User
+from .models import Asistencia, Estudiante , FaltaAsistencia , FaltaPago , Justificacion , Pago, Servicio , University
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email', 'password']
+        extra_kwargs = {'password': {'write_only': True}}
+    
+class AsistenciaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Asistencia
+        fields = '__all__'
+
+class EstudianteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Estudiante
+        fields = '__all__'
+
+class FaltaAsistenciaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FaltaAsistencia
+        fields = '__all__'
+
+class FaltaPagoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FaltaPago
+        fields = '__all__'
+
+class JustificacionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Justificacion
+        fields = '__all__'
+
+class PagoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pago
+        fields = '__all__'
+
+class ServicioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Servicio
+        fields = '__all__'
+
+class UniversitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = University
+        fields = '__all__'
+```
+##Funcionamiento
+
     1. El alumno inicia sesión.
     2. El alumno selecciona el o los cursos donde desea realizar una inscripción.
     3. El alumno selecciona el grupo de laboatorio donde desea incribirse.
     4. El alumno puede tener la posibilidad de anular una incripción por varias razones: cambio de grupo, corregir error, etc.
     5. El alumno puede ver el consolidado de sus inscripciones.
     6. El alumno cierra sesión.
+Github del proyecto:
 
-    Todas y cada una de estas pantallas debe funcionar en la plantilla bootstrap.
-    A continuación se muestran las actividades realizadas para su construcción:
-    ...
+URL en Heroku:
 
-##  Servicios mediante una API RESTful
-    Se ha creado una aplicación que pondra a disposición cierta información para ser consumida por otros clientes HTTP.
-    1. GET : Con el método get se devolverá la lista de cursos, grupos y horarios establecidos para que el alumno sobre todo vea esta información en cualquier otro medio. En formato JSON. 
-    2. POST : Con este método se enviara el código del alumno y se devolvera sus inscripciones. En formato JSON.
-    
-    Ejemplo: Prueba en Página web, aplicación móvil, PDF, etc.
-    Se especifican los pasos para crear el servicio RestFul
-    ...
-
-Github del proyecto:   https://github.com/Larcem/PROYECTO_DJANGO.git
-
-URL Playlist YouTube: videos:  https://drive.google.com/drive/folders/1oNF45HDTBMmPOm3sLQuyJJhV2ILDtkt6?usp=sharing
-
+URL Playlist YouTube.
+Producción de un PlayList en Youtube explicando cada una de los requerimientos.
+Video 01 - Sistema - Requisitos.
+Video 02 - Modelo de datos - DD - DER.
+etc…
 
 
 ## REFERENCIAS
@@ -616,23 +633,16 @@ URL Playlist YouTube: videos:  https://drive.google.com/drive/folders/1oNF45HDTB
 
 [last-commit]: https://img.shields.io/github/last-commit/rescobedoq/pw2?label=Last%20Commit
 
-[Debian]: https://img.shields.io/badge/Debian-D70A53?style=for-the-badge&logo=debian&logoColor=white
-[debian-site]: https://www.debian.org/index.es.html
-
 [Git]: https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white
 [git-site]: https://git-scm.com/
 
 [GitHub]: https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white
 [github-site]: https://github.com/
 
-[Vim]: https://img.shields.io/badge/VIM-%2311AB00.svg?style=for-the-badge&logo=vim&logoColor=white
-[vim-site]: https://www.vim.org/
-
 [Java]: https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white
 [java-site]: https://docs.oracle.com/javase/tutorial/
 
 
-[![Debian][Debian]][debian-site]
 [![Git][Git]][git-site]
 [![GitHub][GitHub]][github-site]
 [![Vim][Vim]][vim-site]
