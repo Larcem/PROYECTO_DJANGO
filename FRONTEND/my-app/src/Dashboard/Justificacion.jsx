@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { addJustificacion } from '../api/api'; 
 import './Justificacion.css'; 
+
 const Justificacion = () => {
   const [faltaAsistencia, setFaltaAsistencia] = useState('');
   const [descripcion, setDescripcion] = useState('');
