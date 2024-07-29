@@ -1,0 +1,17 @@
+
+.Asistencia_ul {
+    list-style-type: none; /* Elimina los puntos de lista por defecto */
+    padding: 0; /* Elimina el padding por defecto */
+    margin: 0; /* Elimina el margin por defecto */
+  }
+  
+  .Asistencia_li {
+    background-color: #333; /* Fondo oscuro para contraste con texto blanco */
+    color: white; /* Texto blanco */
+    padding: 10px; /* Espaciado interno */
+    margin: 5px 0; /* Espaciado entre elementos */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+    text-align: right; /* Alineación del texto a la derecha */
+    /* Añade más estilos si lo deseas */
+  }
