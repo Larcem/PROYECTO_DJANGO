@@ -204,19 +204,20 @@
         monto
         semana
         Status
-Asistencia:
+    Asistencia:
         Id_asistencia (PK)
         Estudiante (FK)
         Status
-Justificacion:
+    Justificacion:
         Id_asistencia (FK)
         Descripcion
-
+## Modelos
     Una ves realiado el diagrama ER , pasamos a la creacion delos modelos como es el caso de:
 
-![Modelos](./diagrama_ER/modelos.png)
+![Modelos](./diagrama_ER/modelos.jpeg)
 
-
+##  BACKEND
+##  FRONTEND
 
 
 
