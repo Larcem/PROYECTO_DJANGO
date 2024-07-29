@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
 import './Dashboard.css';
-import Asistencia from './Asistencia'; // Asegúrate de que la ruta sea correcta
-import PagosList from './Pagos'; // Asegúrate de que la ruta sea correcta
-import Justificacion from './Justificacion'; // Asegúrate de que la ruta sea correcta
+import PagosList from './Pagos'; 
+import Asistencia from './Asistencia';
+import React, { useState } from 'react';
+import Justificacion from './Justificacion'; 
 
 function Dashboard() {
-  const [menuOpen, setMenuOpen] = useState(true); // Estado para el menú principal
-  const [userMenuOpen, setUserMenuOpen] = useState(false); // Estado para el menú de usuario
-  const [currentView, setCurrentView] = useState(''); // Estado para el componente actual
+  const [menuOpen, setMenuOpen] = useState(true); 
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [currentView, setCurrentView] = useState(''); 
 
   const toggleSidebar = () => {
     setMenuOpen(!menuOpen);
-    setUserMenuOpen(false); // Cierra el menú de usuario cuando se repliega el sidebar
+    setUserMenuOpen(false);
   };
 
   const toggleUserMenu = () => {
-    setUserMenuOpen(!userMenuOpen); // Alterna el estado del menú de usuario
+    setUserMenuOpen(!userMenuOpen); 
   };
 
   const showAsistencia = () => {

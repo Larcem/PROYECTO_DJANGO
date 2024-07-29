@@ -1,7 +1,6 @@
-// src/components/PagosList.jsx
 import React, { useEffect, useState } from 'react';
-import { getAllPagos } from '../api/api'; // Asegúrate de que la ruta sea correcta
-import './Pagos.css'; // Importa el CSS correspondiente
+import { getAllPagos } from '../api/api'; 
+import './Pagos.css'; 
 
 const PagosList = () => {
   const [pagos, setPagos] = useState([]);
@@ -11,7 +10,7 @@ const PagosList = () => {
     const fetchPagos = async () => {
       try {
         const data = await getAllPagos();
-        setPagos(data.data); // Ajusta si la estructura de los datos es diferente
+        setPagos(data.data); 
       } catch (err) {
         setError(err.message);
       }
@@ -31,7 +30,7 @@ const PagosList = () => {
       second: '2-digit',
       hour12: false,
     };
-    return date.toLocaleString('es-ES', options); // Puedes ajustar el locale según tus necesidades
+    return date.toLocaleString('es-ES', options); 
   };
 
   if (error) return <p>Error: {error}</p>;

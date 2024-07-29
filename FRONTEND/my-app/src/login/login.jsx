@@ -6,7 +6,7 @@ function Login({ setIsLoggedIn }) {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/token/', { // Cambia la URL al endpoint de tu API para obtener el token
+      const response = await fetch('http://localhost:8000/api/token/', { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -16,9 +16,9 @@ function Login({ setIsLoggedIn }) {
 
       if (response.ok) {
         const data = await response.json();
-        localStorage.setItem('token', data.access); // Guardar el token en el localStorage
+        localStorage.setItem('token', data.access);
         setIsLoggedIn(true);
-        navigate('/dashboard'); // Redirigir al Dashboard
+        navigate('/dashboard');
       } else {
         setError('Credenciales incorrectas');
       }

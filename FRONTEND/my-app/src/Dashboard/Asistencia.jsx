@@ -1,12 +1,11 @@
-// src/components/AsistenciasList.js
 import React, { useEffect, useState } from 'react';
-import { getAllAsistencias, getEstudianteById } from '../api/api'; // Asegúrate de que la ruta sea correcta
-import './Asistencia.css'; // Importa el CSS correspondiente
+import { getAllAsistencias, getEstudianteById } from '../api/api';
+import './Asistencia.css';
 
 const AsistenciasList = () => {
   const [asistencias, setAsistencias] = useState([]);
   const [error, setError] = useState(null);
-  const [estudiantes, setEstudiantes] = useState({}); // Almacena datos del estudiante por ID
+  const [estudiantes, setEstudiantes] = useState({}); 
 
   useEffect(() => {
     const fetchAsistencias = async () => {
@@ -15,7 +14,6 @@ const AsistenciasList = () => {
         const asistenciasData = data["data"];
         setAsistencias(asistenciasData);
 
-        // Obtén los estudiantes correspondientes
         const estudiantesPromises = asistenciasData.map(asistencia =>
           getEstudianteById(asistencia.estudiante).then(estudianteData => ({
             id: asistencia.estudiante,
@@ -23,10 +21,8 @@ const AsistenciasList = () => {
           }))
         );
         
-        // Espera a que todas las promesas se resuelvan
         const estudiantesArray = await Promise.all(estudiantesPromises);
         
-        // Crea un objeto de estudiantes con ID como clave
         const estudiantesMap = estudiantesArray.reduce((acc, estudiante) => {
           acc[estudiante.id] = estudiante.nombre;
           return acc;
@@ -51,7 +47,7 @@ const AsistenciasList = () => {
       second: '2-digit',
       hour12: false,
     };
-    return date.toLocaleString('es-ES', options); // Puedes ajustar el locale según tus necesidades
+    return date.toLocaleString('es-ES', options);
   };
   if (error) return <p>Error: {error}</p>;
   if (asistencias.length === 0) return <p>No hay asistencias disponibles.</p>;

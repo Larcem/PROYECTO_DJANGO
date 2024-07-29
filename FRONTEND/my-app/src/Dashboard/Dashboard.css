@@ -18,7 +18,7 @@
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
-  color: white; /* Texto blanco para las etiquetas */
+  color: white; 
 }
 
 .Justificacion_field input,
@@ -28,8 +28,8 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
-  color: white; /* Texto blanco para los campos de entrada */
-  background-color: #333; /* Fondo gris oscuro para los campos de entrada */
+  color: white;
+  background-color: #333;
 }
 
 .Justificacion_field textarea {
@@ -64,21 +64,21 @@ button:hover {
 
 .dashboard-container {
   display: flex;
-  margin-top: 20px; /* Ajusta según sea necesario para desplazar todo el contenedor hacia abajo */
+  margin-top: 20px; 
 }
 
 .sidebar {
   transition: width 0.3s;
-  margin-top: 20px; /* Añade margen superior para mover la barra lateral hacia abajo */
-  background-color: #d4d4d4; /* Fondo blanco para la barra lateral */
+  margin-top: 20px; 
+  background-color: #d4d4d4; 
 }
 
 .sidebar.open {
-  width: 250px; /* Ancho cuando está abierto */
+  width: 250px; 
 }
 
 .sidebar.closed {
-  width: 60px; /* Ancho cuando está cerrado */
+  width: 60px;
 }
 
 .user-info {
@@ -87,41 +87,40 @@ button:hover {
   border: none;
   padding: 15px;
   text-align: center;
-  width: 60px; /* Ancho del botón redondo */
-  height: 60px; /* Altura del botón redondo */
-  border-radius: 50%; /* Hace que el botón sea redondo */
-  margin: 10px auto; /* Centra el botón horizontalmente y añade margen superior e inferior */
-  font-size: 18px; /* Tamaño del texto dentro del botón */
-  color: #fff; /* Color del texto */
+  width: 60px;
+  height: 60px; 
+  border-radius: 50%; 
+  margin: 10px auto; 
+  font-size: 18px;
   display: flex;
-  align-items: center; /* Centra verticalmente el texto */
-  justify-content: center; /* Centra horizontalmente el texto */
+  align-items: center; 
+  justify-content: center; 
   transition: background-color 0.3s;
 }
 
 .user-info:hover {
-  background-color: #777777; /* Fondo gris más oscuro al pasar el ratón */
+  background-color: #777777; 
 }
 
 .menu-buttons {
   display: flex;
   flex-direction: column;
-  padding: 10px; /* Añade padding para que los botones no estén pegados al borde */
+  padding: 10px; 
 }
 
 .menu-buttons .sidebar-button {
   display: block;
   padding: 10px;
   text-align: left;
-  margin-bottom: 15px; /* Espacio entre los botones */
-  background-color: #7c7979; /* Fondo gris claro para los botones */
+  margin-bottom: 15px; 
+  background-color: #7c7979; 
   border: none;
-  border-radius: 8px; /* Bordes redondeados */
+  border-radius: 8px; 
   transition: background-color 0.3s;
 }
 
 .menu-buttons .sidebar-button:hover {
-  background-color: #d0d0d0; /* Fondo gris más oscuro al pasar el ratón */
+  background-color: #d0d0d0; 
 }
 
 .menu-buttons .sedebar-button_cerrar{
@@ -133,36 +132,34 @@ button:hover {
 }
 
 .Asistencia_ul {
-  list-style-type: none; /* Elimina los puntos de lista por defecto */
-  padding: 0; /* Elimina el padding por defecto */
-  margin: 0; /* Elimina el margin por defecto */
+  list-style-type: none; 
+  padding: 0; 
+  margin: 0; 
 }
 
 .Asistencia_li {
-  background-color: #333; /* Fondo oscuro para contraste con texto blanco */
-  color: white; /* Texto blanco */
-  padding: 10px; /* Espaciado interno */
-  margin: 5px 0; /* Espaciado entre elementos */
-  border-radius: 5px; /* Bordes redondeados */
-  font-size: 16px; /* Tamaño de fuente */
-  text-align: right; /* Alineación del texto a la derecha */
-  /* Añade más estilos si lo deseas */
+  background-color: #333; 
+  color: white; 
+  padding: 10px;
+  margin: 5px 0; 
+  border-radius: 5px; 
+  font-size: 16px; 
+  text-align: right; 
 }
 .Pagos_ul {
-  list-style-type: none; /* Elimina los puntos de lista por defecto */
-  padding: 0; /* Elimina el padding por defecto */
-  margin: 0; /* Elimina el margin por defecto */
+  list-style-type: none; 
+  padding: 0; 
+  margin: 0; 
 }
  
 .Pagos_li {
-  background-color: #333; /* Fondo oscuro para contraste con texto blanco */
-  color: white; /* Texto blanco */
-  padding: 10px; /* Espaciado interno */
-  margin: 5px 0; /* Espaciado entre elementos */
-  border-radius: 5px; /* Bordes redondeados */
-  font-size: 16px; /* Tamaño de fuente */
-  text-align: right; /* Alineación del texto a la derecha */
-  /* Añade más estilos si lo deseas */
+  background-color: #333; 
+  color: white; 
+  padding: 10px; 
+  margin: 5px 0; 
+  border-radius: 5px; 
+  font-size: 16px; 
+  text-align: right; 
 }
 
 .Justificacion_container {
@@ -194,8 +191,8 @@ button:hover {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    color: white !important; /* Asegura que el texto sea blanco */
-    background-color: #333 !important; /* Asegura que el fondo sea gris oscuro */
+    color: white !important; 
+    background-color: #333 !important; 
 }
 
 .Justificacion_field textarea {

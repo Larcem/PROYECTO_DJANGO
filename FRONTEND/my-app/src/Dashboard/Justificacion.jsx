@@ -1,8 +1,6 @@
-// src/components/Justificacion.jsx
 import React, { useState } from 'react';
-import { addJustificacion } from '../api/api'; // Asegúrate de que la ruta sea correcta
-import './Justificacion.css'; // Asegúrate de crear este archivo CSS
-
+import { addJustificacion } from '../api/api'; 
+import './Justificacion.css'; 
 const Justificacion = () => {
   const [faltaAsistencia, setFaltaAsistencia] = useState('');
   const [descripcion, setDescripcion] = useState('');
@@ -13,10 +11,9 @@ const Justificacion = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Datos para enviar
     const justificacionData = {
       FaltaAsistencia: faltaAsistencia,
-      id_user: 1, // Aquí deberías establecer el ID del usuario de acuerdo a tu lógica de autenticación
+      id_user: 1, 
       descripcion,
       status,
     };

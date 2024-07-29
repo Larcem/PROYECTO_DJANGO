@@ -18,7 +18,7 @@
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: white; /* Texto blanco para las etiquetas */
+    color: white; 
 }
 
 .Justificacion_field input,
@@ -28,8 +28,8 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    color: white; /* Texto blanco para los campos de entrada */
-    background-color: #333; /* Fondo gris oscuro para los campos de entrada */
+    color: white; 
+    background-color: #333;
 }
 
 .Justificacion_field textarea {
