@@ -190,17 +190,35 @@
 ##  Diagrama Entidad-Relación
    ![Diagramaa_ER](./diagrama_ER/erd.png)
 ##  Administración con Django
-    Se muestran los pasos realizados para crear el Proyecto, la aplicación, creacion de modelos, migraciones y habilitación del panel de administración en Django.
-    ...
+    Para iniciar se crea un diagrama Entidad Relacion , plasmando las entidades que llegaremos  acrear , junto a sus atributos ya vistos anteriormente, teniendo finalmente:
+    Estudiante
+        CUI (Primary Key)
+        Nombre
+        Apellido
+        Carrera_universitarioa (foreign Key)
+        Correo (FK)
+        Status
+    Pago:
+        ID_pago(Pk)
+        CUI (FK)
+        monto
+        semana
+        Status
+Asistencia:
+        Id_asistencia (PK)
+        Estudiante (FK)
+        Status
+Justificacion:
+        Id_asistencia (FK)
+        Descripcion
 
-##  Plantillas Bootstrap
-    Se seleccionó la siguiente plantilla para el usuario final (No administrador).
+    Una ves realiado el diagrama ER , pasamos a la creacion delos modelos como es el caso de:
 
-    Demo online:
-    URL: ...
+![Modelos](./diagrama_ER/modelos.png)
 
-    Se muestran las actividades realizadas para adecuación de plantillas, vistas, formularios en Django.
-    ...
+
+
+
 
 ##  CRUD - Core Business - Clientes finales
     El núcleo de negocio del sistema de inscripciones tiene valor de aceptación para los cliente finales (alumnos) radica en realizar el proceso de inscripción propiamente, que empieza desde que:
@@ -224,26 +242,10 @@
     Se especifican los pasos para crear el servicio RestFul
     ...
 
-##  Operaciones asíncronas AJAX
-    Se propone el uso de AJAX para realizar la asignación de carga académica a los docentes que estan registrados. Esta operación la realizará el usuario operador encargado por el DAISI.
-    Se muestran los pasos necesarios a realizar.
-    ....
+Github del proyecto:   https://github.com/Larcem/PROYECTO_DJANGO.git
 
-##  Investigación: Email, Upload.
-    - Email: Se utilizará la funcionalidad del uso de envío de correos electrónicos cuando el proceso de inscripciones culmine y al profesor le llegue la lista de alumnos inscritos en sus grupos a cargo.
-    - Upload: Se utilizará esta funcionalidad para subír, archivos CSV para importar y exportar información en el sistema.
-    Se muestran los pasos realizados para su funcionamiento correcto.
-    ...
+URL Playlist YouTube: videos:  https://drive.google.com/drive/folders/1oNF45HDTBMmPOm3sLQuyJJhV2ILDtkt6?usp=sharing
 
-Github del proyecto:
-
-URL en Heroku:
-
-URL Playlist YouTube.
-Producción de un PlayList en Youtube explicando cada una de los requerimientos.
-Video 01 - Sistema - Requisitos.
-Video 02 - Modelo de datos - DD - DER.
-etc…
 
 
 ## REFERENCIAS
