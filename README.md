@@ -601,29 +601,7 @@ class UniversitySerializer(serializers.ModelSerializer):
         model = University
         fields = '__all__'
 ```
-##Funcionamiento
 
-    1. El alumno inicia sesión.
-    2. El alumno selecciona el o los cursos donde desea realizar una inscripción.
-    3. El alumno selecciona el grupo de laboatorio donde desea incribirse.
-    4. El alumno puede tener la posibilidad de anular una incripción por varias razones: cambio de grupo, corregir error, etc.
-    5. El alumno puede ver el consolidado de sus inscripciones.
-    6. El alumno cierra sesión.
-Github del proyecto:
-
-URL en Heroku:
-
-URL Playlist YouTube.
-Producción de un PlayList en Youtube explicando cada una de los requerimientos.
-Video 01 - Sistema - Requisitos.
-Video 02 - Modelo de datos - DD - DER.
-etc…
-
-
-## REFERENCIAS
--   
-
-#
 
 [license]: https://img.shields.io/github/license/rescobedoq/pw2?label=rescobedoq
 [license-file]: https://github.com/rescobedoq/pw2/blob/main/LICENSE
